@@ -26,7 +26,7 @@ func main() {
 	// Configure the serial port
 	config := &serial.Config{
 		Name:        serialDevice, // Change to your port (e.g., "/dev/ttyUSB0" for Linux)
-		Baud:        9600,   // Set the correct baud rate
+		Baud:        9600,         // Set the correct baud rate
 		ReadTimeout: time.Second * 1,
 		Size:        8, // Change the size to 8 bits
 	}
@@ -45,7 +45,10 @@ func main() {
 		buf := make([]byte, 1024) // Adjust buffer size as needed
 		n, err := port.Read(buf)
 		if err != nil {
-			log.Fatal("Reading error: ", err)
+			if err.Error() != "EOF" {
+				log.Fatal("Reading error: ", err)
+			}
+			continue // Skip EOF and keep reading
 		}
 
 		buffer_string := string(buf[:n])
