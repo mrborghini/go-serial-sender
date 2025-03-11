@@ -45,7 +45,7 @@ func main() {
 		buf := make([]byte, 1024) // Adjust buffer size as needed
 		n, err := port.Read(buf)
 		if err != nil {
-			log.Fatal(err)
+			log.Fatal("Reading error: ", err)
 		}
 
 		buffer_string := string(buf[:n])
