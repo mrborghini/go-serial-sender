@@ -34,7 +34,8 @@ func (w *WS) Connect(channel string) {
 	for {
 		_, message, err := conn.ReadMessage()
 		if err != nil {
-			panic(err)
+			fmt.Printf("Error reading message: %v\n", err)
+			break
 		}
 
 		messageString := string(message)
