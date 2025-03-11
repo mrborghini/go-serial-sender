@@ -32,14 +32,13 @@ func (w *WS) Connect(channel string) {
 	w.send(string(jsonSubscribe))
 
 	for {
-		_, _, err := conn.ReadMessage() // Comment this line and uncomment the lines below if you want to receive data as well.
-		// _, message, err := conn.ReadMessage()
+		_, message, err := conn.ReadMessage()
 		if err != nil {
 			panic(err)
 		}
 
-		// messageString := string(message)
-
+		messageString := string(message)
+		fmt.Println(messageString)
 	}
 }
 
