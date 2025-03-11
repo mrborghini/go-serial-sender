@@ -27,7 +27,7 @@ func main() {
 	config := &serial.Config{
 		Name:        serialDevice, // Change to your port (e.g., "/dev/ttyUSB0" for Linux)
 		Baud:        9600,   // Set the correct baud rate
-		ReadTimeout: time.Millisecond * 100,
+		ReadTimeout: time.Second * 1,
 		Size:        8, // Change the size to 8 bits
 	}
 
